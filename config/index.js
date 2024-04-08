@@ -23,12 +23,7 @@ const _config = {
     },
     privateKEY: process.env.PRIVATE_KEY || randomBytes(32).toString('hex'),
     systemToken: process.env.ADMIN_TOKEN || randomBytes(48).toString('hex'),
-    websocketToken: process.env.WEBSOCKET_TOKEN || randomBytes(32).toString('hex'),
-    discord: {
-        clientID: process.env.CLIENT_ID,
-        clientSecret: process.env.CLIENT_SECRET,
-        botToken: process.env.BOT_TOKEN
-    }
+    websocketToken: process.env.WEBSOCKET_TOKEN || randomBytes(32).toString('hex')
 };
 
 export default _config;

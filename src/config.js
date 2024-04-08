@@ -3,7 +3,7 @@ import { sendError } from './events.js';
 import statusCodes from '../config/status.js';
 import { verifyToken, checkLogin } from '../middleware/authentication.js';
 
-const allowedOrigins = ["localhost:8080", "localhost:9009", "localhost:9010"];
+const allowedOrigins = ["localhost:8080", "localhost:9009", "localhost:9010", "https://graduationws.onrender.com", "https://graduation-9a7o.onrender.com"];
 
 function originIsAllowed(request, origin) {
     if (request.remoteAddress.includes("::1") || request.remoteAddress.includes("::ffff:127.0.0.1")) return true;
@@ -63,6 +63,11 @@ const checkAuthorization = async (request) => {
 const checkRequest = async (request, refresh = false) => {
     try {
 
+        console.log("Request : ", request);
+        console.log("Request Origin : ", (request.origin || request.remoteAddress));
+        console.log("Request URL : ", request.httpRequest.url);
+        console.log("Request Headers : ", request.httpRequest.headers);
+        console.log("Request Query : ", request.httpRequest.query);
         let origin = originIsAllowed(request, request.origin);
         if (!origin) throw "This origin is not allowed";
 
