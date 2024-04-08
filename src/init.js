@@ -35,16 +35,16 @@ const requestFunction = async (request) => {
 
                 console.log("data :|: ", data);
                 console.log("event :|: ", data.event);
-                console.log("wsauth :|: ", data.wsauth, env.websocketToken);
+                console.log("systemAuth :|: ", data.systemAuth, env.websocketToken);
 
                 if(data.event == "createMessage") {
-                    if(data.wsauth !== env.websocketToken) {
+                    if(data.systemAuth !== env.websocketToken) {
                         sendEvent("createMessage", {event:"error", data:{message:data}});
                         return;
                     }
                     sendEvent("createMessage", data);
                 } else if(data.event == "createNotification") {
-                    if(data.wsauth !== env.websocketToken) {
+                    if(data.systemAuth !== env.websocketToken) {
                         sendEvent("createNotification", {event:"error", data:{message:data}});
                         return;
                     }
