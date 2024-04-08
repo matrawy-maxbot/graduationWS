@@ -33,6 +33,10 @@ const requestFunction = async (request) => {
                 console.log('Received Message: ' + message.utf8Data);
                 let data = JSON.parse(message.utf8Data);
 
+                console.log("data :|: ", data);
+                console.log("event :|: ", data.event);
+                console.log("wsauth :|: ", data.wsauth, env.websocketToken);
+
                 if(data.event == "createMessage") {
                     if(data.wsauth !== env.websocketToken) {
                         sendEvent("createMessage", {event:"error", data:{message:data}});
