@@ -7,6 +7,8 @@ import env from '../config/index.js';
 const requestFunction = async (request) => {
     try {
 
+        console.log("there is a request for websocket!", request.origin, request.remoteAddress);
+
         const connectionId = randomBytes(32).toString('hex');
 
         request.id = connectionId;
