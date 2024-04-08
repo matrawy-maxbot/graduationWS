@@ -34,6 +34,8 @@ const listenSocketRequest = (connection, request) => {
                 let user = connection.owner.user;
                 let messageData = JSON.parse(message).data;
                 messageData = messageData.data || messageData;
+                console.log("messageData :|: ", messageData);
+                console.log("user :|: ", user, (messageData.source == user.id || messageData.destination == user.id));
                 if(messageData.source == user.id || messageData.destination == user.id) {
                     connection.sendUTF(message);
                 }
@@ -44,6 +46,9 @@ const listenSocketRequest = (connection, request) => {
             if(connection.connected) {
                 let user = connection.owner.user;
                 let messageData = JSON.parse(message).data;
+                messageData = messageData.data || messageData;
+                console.log("messageData :|: ", messageData);
+                console.log("user :|: ", user, (messageData.source == user.id || messageData.destination == user.id));
                 if(messageData.source == user.id || messageData.destination == user.id) {
                     connection.sendUTF(message);
                 }
