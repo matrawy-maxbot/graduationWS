@@ -34,13 +34,13 @@ const requestFunction = async (request) => {
                 let data = JSON.parse(message.utf8Data);
 
                 if(data.event == "createMessage") {
-                    if(data.wsAuth !== env.websocketToken) {
+                    if(data.wsauth !== env.websocketToken) {
                         sendEvent("createMessage", {event:"error", data:{message:data}});
                         return;
                     }
                     sendEvent("createMessage", data);
                 } else if(data.event == "createNotification") {
-                    if(data.wsAuth !== env.websocketToken) {
+                    if(data.wsauth !== env.websocketToken) {
                         sendEvent("createNotification", {event:"error", data:{message:data}});
                         return;
                     }
