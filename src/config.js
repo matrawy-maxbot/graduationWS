@@ -3,7 +3,7 @@ import { sendError } from './events.js';
 import statusCodes from '../config/status.js';
 import { verifyToken, checkLogin } from '../middleware/authentication.js';
 
-const allowedOrigins = ["localhost:8080", "localhost:9009", "localhost:9010", "https://graduationws.onrender.com", "https://graduation-9a7o.onrender.com"];
+const allowedOrigins = ["localhost:8080", "localhost:9009", "localhost:9010", "graduationws.onrender.com", "graduation-9a7o.onrender.com"];
 
 function originIsAllowed(request, origin) {
     if (request.remoteAddress.includes("::1") || request.remoteAddress.includes("::ffff:127.0.0.1")) return true;
