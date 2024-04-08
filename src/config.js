@@ -63,17 +63,16 @@ const checkAuthorization = async (request) => {
 const checkRequest = async (request, refresh = false) => {
     try {
 
-        console.log("Request : ", request);
         console.log("Request Origin : ", (request.origin || request.remoteAddress));
         console.log("Request URL : ", request.httpRequest.url);
         console.log("Request Headers : ", request.httpRequest.headers);
         console.log("Request Query : ", request.httpRequest.query);
         let origin = originIsAllowed(request, request.origin);
         if (!origin) throw "This origin is not allowed";
-
+        console.log("Origin is allowed!");
         let auth = await checkAuthorization(request);
         if (!auth) throw "Unauthorized";
-
+        console.log("Authorization is valid!");
         return {origin: origin, user: auth};
 
     } catch (err) {
